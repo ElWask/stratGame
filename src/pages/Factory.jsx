@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Silo from '../components/Silo';
 
-function Factory({ factory, ressource, setRessource, level, setLevel }) {
+function Factory({ factory, ressource, setRessource, level, increase }) {
   const { cost, unit, maxCapacity, color } = factory;
 
   const productionInterval = 100;
@@ -21,7 +21,7 @@ function Factory({ factory, ressource, setRessource, level, setLevel }) {
 
   const buildFactory = () => {
     if (ressource >= cost) {
-      setLevel(level + 1);
+      increase();
       setRessource(ressource - cost);
     } else {
       alert("Not enough ressources to build a factory!");
