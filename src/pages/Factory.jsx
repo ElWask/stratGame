@@ -3,7 +3,6 @@ import Silo from '../components/Silo';
 
 function Factory({ factory, ressource, setRessource, level, increase }) {
   const { cost, unit, maxCapacity, color } = factory;
-
   const productionInterval = 100;
 
 
