@@ -1,22 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Silo from '../components/Silo';
 
 function Factory({ factory, ressource, setRessource, level, increase }) {
   const { cost, unit, maxCapacity, color } = factory;
-  const productionInterval = 100;
-
-
-  useEffect(() => {
-    const productionTimer = setInterval(() => {
-      if( ressource < maxCapacity * level ) {
-        setRessource((prevRessource) => prevRessource + level * unit);
-      }
-    }, productionInterval);
-
-    return () => {
-      clearInterval(productionTimer);
-    };
-  }, [level, ressource, setRessource, unit, maxCapacity]);
 
   const buildFactory = () => {
     if (ressource >= cost) {
@@ -27,8 +13,6 @@ function Factory({ factory, ressource, setRessource, level, increase }) {
     }
   };
 
-
-
   return (
     <div className='factory'>
       <Silo
@@ -36,9 +20,7 @@ function Factory({ factory, ressource, setRessource, level, increase }) {
         maxCapacity={maxCapacity * level}
         level={level}
         color={color}
-
       />
-
       <button className='button-level-up' onClick={buildFactory}>
         <span>{cost}</span>
         Level up
